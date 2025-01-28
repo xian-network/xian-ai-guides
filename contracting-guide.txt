@@ -1,0 +1,132 @@
+CONTRACTING SMART CONTRACT DEVELOPMENT GUIDE
+============================================
+
+1. CORE LANGUAGE RULES
+--------------------
+ALLOWED BUILTINS:
+- Primitive types/constants: bool, int, str, float, dict, list, tuple, set, True, False, None, Exception
+- Type checks/conversions: isinstance, issubclass, bytes, bytearray, chr, ord, hex, bin, ascii, format, oct
+- Math/iterables: abs, divmod, max, min, pow, round, sum, all, any, filter, map, range, reversed, sorted, zip
+- Containers: dict, list, tuple, set, frozenset
+
+EXPLICITLY FORBIDDEN:
+- print() / file I/O
+- Classes (class), async/await, lambda
+- Exception handling (try/except/finally)
+- Metaprogramming (eval, exec, getattr)
+- Underscore prefixes (__private_var)
+
+2. CONTRACT STRUCTURE
+-------------------
+MANDATORY TEMPLATE:
+# State declarations (top-level only)
+owner = Variable()
+balances = Hash()
+
+# Constructor (runs once on deployment)
+@construct
+def init():
+    owner.set(ctx.caller)
+    balances[ctx.caller] = 1000
+
+# Exported function (public interface)
+@export
+def transfer(to: str, amount: int):
+    assert amount > 0, "Amount must be positive"
+    sender = ctx.caller
+    balances[sender] -= amount
+    balances[to] += amount
+
+3. TYPE SYSTEM & ANNOTATIONS
+-------------------------
+VALID PARAMETER/RETURN TYPES:
+@export
+def valid_annotations(
+    name: str,                   # Primitive
+    metadata: dict,              # Key-value store
+    deadline: datetime.datetime  # Special types
+) -> None:                       # Optional return
+    pass
+
+4. STATE MANAGEMENT
+-----------------
+ALLOWED ORM OBJECTS:
+# Single-value storage
+config = Variable()
+
+# Key-value storage (max 16 dimensions)
+ledger = Hash(default_value=0)
+
+# Cross-contract access (read-only)
+token_supply = ForeignVariable(
+    foreign_contract='currency',
+    foreign_name='total_supply'
+)
+
+5. BLOCK CONTEXT & UTILITIES
+--------------------------
+@export
+def get_block_info() -> dict:
+    return {
+        "height": block_num,     # Current block number (int)
+        "hash": block_hash,      # Current block hash (str)
+        "time": now              # UTC timestamp (datetime)
+    }
+
+@export
+def verify_signer(pubkey: str, sig: str) -> bool:
+    return verify_signature(
+        pubkey=pubkey,
+        signature=sig,
+        message=ctx.signer
+    )
+
+6. ALLOWED CONTROL FLOW
+---------------------
+PERMITTED PATTERNS:
+# If-Elif-Else
+if balances[ctx.caller] > 100:
+    status = "VIP"
+else:
+    status = "Standard"
+
+# For loops (bounded with range)
+for i in range(10):
+    process(i)
+
+# Assertions (no exceptions!)
+assert ctx.signer == owner.get(), "Unauthorized"
+
+7. CROSS-CONTRACT CALLS
+---------------------
+@export
+def call_other_contract():
+    # Absolute import only
+    token = importlib.import_module('currency')
+    
+    # Interface validation
+    required = [
+        importlib.Func('transfer', args=('amount', 'to')),
+        importlib.Var('balances', Hash)
+    ]
+    assert importlib.enforce_interface(token, required)
+    
+    # Execute call
+    token.transfer(amount=100, to=ctx.caller)
+
+8. OPTIMIZATION RULES
+------------------
+# High cost: Write operations (25 stamps/byte)
+balances[ctx.caller] = 500  # Minimize writes
+
+# Low cost: Read operations (1 stamp/byte)
+balance = balances[ctx.caller]  # Reuse reads
+
+KEY VALIDATION CHECKLIST FOR LLMs
+------------------------------
+1. No random module – deterministic logic only
+2. No nested imports – use top-level importlib
+3. contract should at least have one function with @export decorator
+4. Variables must use Variable()/Hash(), not native types
+
+[END OF GUIDE]
