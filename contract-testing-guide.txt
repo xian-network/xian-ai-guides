@@ -1,0 +1,116 @@
+=== Contracting Smart Contract Testing Guide ===
+
+1. Test Structure Foundation
+- Use Python's unittest framework
+- Create test class inheriting from unittest.TestCase
+- Implement setUp() for pre-test initialization:
+  * Initialize ContractingClient
+  * Flush previous state
+  * Deploy contract from file
+  * Set up test accounts and initial balances
+- Implement tearDown() for post-test cleanup
+
+2. Environment Configuration
+- Set chain_id for signature validation:
+  self.environment = {"chain_id": "test-chain"}
+- Simulate time-sensitive operations using:
+  environment={"now": Datetime(...)}
+
+3. Test Case Structure
+- Follow Given/When/Then pattern:
+  a. Given - Set up initial conditions
+  b. When - Execute contract method
+  c. Then - Verify outcomes
+
+4. Core Testing Scenarios
+- Happy path valid executions
+- Parameter validation failures
+- Authorization checks
+- Edge cases (max values, time boundaries)
+- State persistence verification
+- Event emission validation
+
+5. State Verification Methods
+- Check contract storage directly:
+  self.contract.storage["key"]
+- Verify balance changes:
+  self.assertEqual(self.contract.balances["account"], expected)
+- Validate relational data:
+  self.contract.streams[stream_id, "status"]
+
+6. Event Validation
+- Check emitted events contain:
+  * Correct event type
+  * Proper indexed parameters
+  * Accurate data payload
+- Example assertion:
+  self.assertEqual(result['events'][0]['event'], 'Transfer')
+
+7. Time Manipulation
+- Use Datetime helper for time-sensitive tests:
+  begins = Datetime(year=2023, month=1, day=1)
+- Simulate time progression:
+  environment={"now": Datetime(...)}
+
+8. Signature Handling
+- Use Wallet class for cryptographic operations:
+  wallet = Wallet(private_key)
+  signature = wallet.sign_msg(message)
+- Verify signed permits:
+  crypto.verify(public_key, message, signature)
+
+9. Authorization Testing
+- Verify role-based access:
+  with self.assertRaises(Exception):
+    contract.method(signer=unauthorized_account)
+- Test permit replay protection
+
+10. Error Testing Patterns
+- Use context manager for expected exceptions:
+  with self.assertRaises(AssertionError) as context:
+    contract.method(invalid_params)
+  self.assertIn("Error message", str(context.exception))
+
+11. Test Helpers
+- Create date helpers:
+  def create_date(year, month, day):
+    return Datetime(...)
+- Build message constructors:
+  def construct_permit_msg(...)
+- Fund test accounts:
+  def fund_wallet(funder, spender, amount)
+
+12. Best Practices
+- Keep tests isolated and independent
+- Test all state transitions
+- Verify both positive and negative cases
+- Use descriptive test names
+- Validate event emissions completely
+- Test boundary conditions
+- Include cleanup verification
+
+=== Example Test Skeleton ===
+
+class TestContract(unittest.TestCase):
+    def setUp(self):
+        self.client = ContractingClient()
+        self.client.flush()
+        # Deploy contract
+        # Initialize test data
+
+    def test_functionality(self):
+        # Setup
+        self.contract.balances["alice"] = 100
+        
+        # Execution
+        result = self.contract.method(
+            param=value,
+            signer="alice",
+            environment={"now": Datetime(...)},
+            return_full_output=True
+        )
+        
+        # Verification
+        self.assertEqual(self.contract.storage["key"], expected_value)
+        self.assertEqual(result["events"][0]["event"], "EventName")
+        self.assertEqual(self.contract.balances["alice"], 90)
