@@ -134,4 +134,109 @@ KEY VALIDATION CHECKLIST FOR LLMs
 3. contract should at least have one function with @export decorator
 4. Variables must use Variable()/Hash(), not native types
 
+9. EVENT LOGGING
+--------------
+Events are used to record significant contract state changes. Follow these rules to define and emit events:
+
+EVENT DEFINITION
+Define events at the top level using LogEvent:
+
+# Syntax
+EventName = LogEvent(
+    event="EventNameString",
+    params={
+        "param1": {"type": <valid_type>, "idx": <boolean>},
+        "param2": {"type": <valid_type>, "idx": <boolean>},
+        ...
+    }
+)
+
+# Example (from xsc001.py)
+TransferEvent = LogEvent(
+    event="Transfer",
+    params={
+        "from": {"type": str, "idx": True},   # `idx=True` enables filtering by this field
+        "to": {"type": str, "idx": True},
+        "amount": {"type": (int, float, decimal)}
+    }
+)
+Rules:
+
+event: Must be a unique, descriptive string.
+
+params:
+
+Use primitive types (str, int, float) or tuples for multiple allowed types.
+
+idx=True marks the parameter as indexable (for efficient querying).
+
+Complex types (e.g., datetime) must be serialized to str before logging.
+
+EMITTING EVENTS
+Call the event instance with a dictionary of parameters:
+
+# Syntax
+EventName({"param1": value1, "param2": value2, ...})
+
+# Example (from xsc001.py)
+@export
+def transfer(amount: float, to: str):
+    ...
+    TransferEvent({"from": ctx.caller, "to": to, "amount": amount})
+Rules:
+
+All parameters defined in the event must be provided.
+
+Data types must match the params definition (e.g., amount must be int/float).
+
+Use str() to serialize non-primitive types (e.g., datetime → str(now)).
+
+BEST PRACTICES
+
+Indexing: Mark frequently queried fields (e.g., addresses, IDs) with idx=True.
+
+Naming: Use past-tense verbs (e.g., Transfer, Approval) for event names.
+
+Data Minimization: Log only essential data to reduce gas/stamp costs.
+
+Consistency: Reuse event definitions across related functions (see TransferEvent in all contracts).
+
+FULL EXAMPLE
+
+# Event definition
+StreamCreatedEvent = LogEvent(
+    event="StreamCreated",
+    params={
+        "sender": {"type": str, "idx": True},
+        "receiver": {"type": str, "idx": True},
+        "stream_id": {"type": str, "idx": True},
+        "rate": {"type": (int, float, decimal)},
+        "begins": {"type": str},  # datetime serialized to string
+        "closes": {"type": str},
+    }
+)
+
+# Emitting the event (from xsc003.py)
+@export
+def create_stream(...):
+    ...
+    StreamCreatedEvent({
+        "sender": sender,
+        "receiver": receiver,
+        "stream_id": stream_id,
+        "rate": rate,
+        "begins": str(begins),
+        "closes": str(closes)
+    })
+    
+Validation Checklist for LLMs:
+
+Are all event parameters explicitly defined with types?
+
+Does the emitted data match the params schema (types, required fields)?
+
+Are non-primitive types (e.g., datetime) converted to str?
+
+Are critical query fields (addresses, IDs) marked with idx=True?
+
 [END OF GUIDE]
