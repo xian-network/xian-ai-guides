@@ -3,6 +3,9 @@ CONTRACTING SMART CONTRACT DEVELOPMENT GUIDE
 
 1. CORE LANGUAGE RULES
 --------------------
+LANGUAGE VERSION:
+- Contracts must use Python 3.11 syntax. Features introduced in later versions are prohibited.
+
 ALLOWED BUILTINS:
 - Primitive types/constants: bool, int, str, float, dict, list, tuple, set, True, False, None, Exception
 - Type checks/conversions: isinstance, issubclass, bytes, bytearray, chr, ord, hex, bin, ascii, format, oct
@@ -47,6 +50,8 @@ def valid_annotations(
     deadline: datetime.datetime  # Special types
 ) -> None:                       # Optional return
     pass
+
+- Contract addresses in contracting are strings prefixed with "con_" (e.g., "con_xsc001").
 
 4. STATE MANAGEMENT
 -----------------
