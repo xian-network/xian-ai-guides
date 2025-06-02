@@ -1,0 +1,4759 @@
+{
+    "data":
+    {
+        "__schema":
+        {
+            "types": [
+            {
+                "name": "Query",
+                "kind": "OBJECT",
+                "description": "The root query type which gives access points into the data universe.",
+                "fields": [
+                {
+                    "name": "query",
+                    "description": "Exposes the root query type nested one level down. This is helpful for Relay 1\nwhich can only query top level fields if they are in a particular form.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "nodeId",
+                    "description": "The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "node",
+                    "description": "Fetches an object given its globally unique `ID`.",
+                    "args": [
+                    {
+                        "name": "nodeId",
+                        "description": "The globally unique `ID`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "Node",
+                        "kind": "INTERFACE"
+                    }
+                },
+                {
+                    "name": "allAddresses",
+                    "description": "Reads and enables pagination through a set of `Address`.",
+                    "args": [
+                    {
+                        "name": "first",
+                        "description": "Only read the first `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "last",
+                        "description": "Only read the last `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "description": "Skip the first `n` values from our `after` cursor, an alternative to cursor\nbased pagination. May not be used with `last`.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "before",
+                        "description": "Read all values in the set before (above) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "after",
+                        "description": "Read all values in the set after (below) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Address`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    },
+                    {
+                        "name": "condition",
+                        "description": "A condition to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "AddressCondition",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "description": "A filter to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "AddressFilter",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "AddressesConnection",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "allContracts",
+                    "description": "Reads and enables pagination through a set of `Contract`.",
+                    "args": [
+                    {
+                        "name": "first",
+                        "description": "Only read the first `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "last",
+                        "description": "Only read the last `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "description": "Skip the first `n` values from our `after` cursor, an alternative to cursor\nbased pagination. May not be used with `last`.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "before",
+                        "description": "Read all values in the set before (above) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "after",
+                        "description": "Read all values in the set after (below) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Contract`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    },
+                    {
+                        "name": "condition",
+                        "description": "A condition to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "ContractCondition",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "description": "A filter to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "ContractFilter",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "ContractsConnection",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "allRewards",
+                    "description": "Reads and enables pagination through a set of `Reward`.",
+                    "args": [
+                    {
+                        "name": "first",
+                        "description": "Only read the first `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "last",
+                        "description": "Only read the last `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "description": "Skip the first `n` values from our `after` cursor, an alternative to cursor\nbased pagination. May not be used with `last`.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "before",
+                        "description": "Read all values in the set before (above) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "after",
+                        "description": "Read all values in the set after (below) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Reward`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    },
+                    {
+                        "name": "condition",
+                        "description": "A condition to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "RewardCondition",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "description": "A filter to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "RewardFilter",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "RewardsConnection",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "allStates",
+                    "description": "Reads and enables pagination through a set of `State`.",
+                    "args": [
+                    {
+                        "name": "first",
+                        "description": "Only read the first `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "last",
+                        "description": "Only read the last `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "description": "Skip the first `n` values from our `after` cursor, an alternative to cursor\nbased pagination. May not be used with `last`.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "before",
+                        "description": "Read all values in the set before (above) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "after",
+                        "description": "Read all values in the set after (below) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `State`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    },
+                    {
+                        "name": "condition",
+                        "description": "A condition to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "StateCondition",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "description": "A filter to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "StateFilter",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "StatesConnection",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "allStateChanges",
+                    "description": "Reads and enables pagination through a set of `StateChange`.",
+                    "args": [
+                    {
+                        "name": "first",
+                        "description": "Only read the first `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "last",
+                        "description": "Only read the last `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "description": "Skip the first `n` values from our `after` cursor, an alternative to cursor\nbased pagination. May not be used with `last`.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "before",
+                        "description": "Read all values in the set before (above) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "after",
+                        "description": "Read all values in the set after (below) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `StateChange`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    },
+                    {
+                        "name": "condition",
+                        "description": "A condition to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "StateChangeCondition",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "description": "A filter to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "StateChangeFilter",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "StateChangesConnection",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "allTransactions",
+                    "description": "Reads and enables pagination through a set of `Transaction`.",
+                    "args": [
+                    {
+                        "name": "first",
+                        "description": "Only read the first `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "last",
+                        "description": "Only read the last `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "description": "Skip the first `n` values from our `after` cursor, an alternative to cursor\nbased pagination. May not be used with `last`.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "before",
+                        "description": "Read all values in the set before (above) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "after",
+                        "description": "Read all values in the set after (below) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Transaction`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    },
+                    {
+                        "name": "condition",
+                        "description": "A condition to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "TransactionCondition",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "description": "A filter to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "TransactionFilter",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "TransactionsConnection",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "addressByAddress",
+                    "description": null,
+                    "args": [
+                    {
+                        "name": "address",
+                        "description": null,
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "Address",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "contractByName",
+                    "description": null,
+                    "args": [
+                    {
+                        "name": "name",
+                        "description": null,
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "Contract",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "rewardById",
+                    "description": null,
+                    "args": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "Reward",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "stateByKey",
+                    "description": null,
+                    "args": [
+                    {
+                        "name": "key",
+                        "description": null,
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "State",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "stateChangeById",
+                    "description": null,
+                    "args": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "StateChange",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByHash",
+                    "description": null,
+                    "args": [
+                    {
+                        "name": "hash",
+                        "description": null,
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "address",
+                    "description": "Reads a single `Address` using its globally unique `ID`.",
+                    "args": [
+                    {
+                        "name": "nodeId",
+                        "description": "The globally unique `ID` to be used in selecting a single `Address`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "Address",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "contract",
+                    "description": "Reads a single `Contract` using its globally unique `ID`.",
+                    "args": [
+                    {
+                        "name": "nodeId",
+                        "description": "The globally unique `ID` to be used in selecting a single `Contract`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "Contract",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "reward",
+                    "description": "Reads a single `Reward` using its globally unique `ID`.",
+                    "args": [
+                    {
+                        "name": "nodeId",
+                        "description": "The globally unique `ID` to be used in selecting a single `Reward`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "Reward",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "state",
+                    "description": "Reads a single `State` using its globally unique `ID`.",
+                    "args": [
+                    {
+                        "name": "nodeId",
+                        "description": "The globally unique `ID` to be used in selecting a single `State`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "State",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "stateChange",
+                    "description": "Reads a single `StateChange` using its globally unique `ID`.",
+                    "args": [
+                    {
+                        "name": "nodeId",
+                        "description": "The globally unique `ID` to be used in selecting a single `StateChange`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "StateChange",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transaction",
+                    "description": "Reads a single `Transaction` using its globally unique `ID`.",
+                    "args": [
+                    {
+                        "name": "nodeId",
+                        "description": "The globally unique `ID` to be used in selecting a single `Transaction`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "Node",
+                "kind": "INTERFACE",
+                "description": "An object with a globally unique `ID`.",
+                "fields": [
+                {
+                    "name": "nodeId",
+                    "description": "A globally unique identifier. Can be used in various places throughout the system to identify this single value.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                }]
+            },
+            {
+                "name": "ID",
+                "kind": "SCALAR",
+                "description": "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID.",
+                "fields": null
+            },
+            {
+                "name": "AddressesConnection",
+                "kind": "OBJECT",
+                "description": "A connection to a list of `Address` values.",
+                "fields": [
+                {
+                    "name": "nodes",
+                    "description": "A list of `Address` objects.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "edges",
+                    "description": "A list of edges which contains the `Address` and cursor to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "pageInfo",
+                    "description": "Information to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "totalCount",
+                    "description": "The count of *all* `Address` you could get from the connection.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                }]
+            },
+            {
+                "name": "Address",
+                "kind": "OBJECT",
+                "description": null,
+                "fields": [
+                {
+                    "name": "nodeId",
+                    "description": "A globally unique identifier. Can be used in various places throughout the system to identify this single value.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "txHash",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "address",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "created",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Address`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "String",
+                "kind": "SCALAR",
+                "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+                "fields": null
+            },
+            {
+                "name": "Datetime",
+                "kind": "SCALAR",
+                "description": "A point in time as described by the [ISO\n8601](https://en.wikipedia.org/wiki/ISO_8601) standard. May or may not include a timezone.",
+                "fields": null
+            },
+            {
+                "name": "Transaction",
+                "kind": "OBJECT",
+                "description": null,
+                "fields": [
+                {
+                    "name": "nodeId",
+                    "description": "A globally unique identifier. Can be used in various places throughout the system to identify this single value.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "hash",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "contract",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "function",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "sender",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "nonce",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "stamps",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "blockHash",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "blockHeight",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "blockTime",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "success",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Boolean",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "result",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "jsonContent",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "created",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "stateChangesByTxHash",
+                    "description": "Reads and enables pagination through a set of `StateChange`.",
+                    "args": [
+                    {
+                        "name": "first",
+                        "description": "Only read the first `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "last",
+                        "description": "Only read the last `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "description": "Skip the first `n` values from our `after` cursor, an alternative to cursor\nbased pagination. May not be used with `last`.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "before",
+                        "description": "Read all values in the set before (above) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "after",
+                        "description": "Read all values in the set after (below) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `StateChange`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    },
+                    {
+                        "name": "condition",
+                        "description": "A condition to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "StateChangeCondition",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "description": "A filter to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "StateChangeFilter",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "rewardsByTxHash",
+                    "description": "Reads and enables pagination through a set of `Reward`.",
+                    "args": [
+                    {
+                        "name": "first",
+                        "description": "Only read the first `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "last",
+                        "description": "Only read the last `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "description": "Skip the first `n` values from our `after` cursor, an alternative to cursor\nbased pagination. May not be used with `last`.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "before",
+                        "description": "Read all values in the set before (above) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "after",
+                        "description": "Read all values in the set after (below) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Reward`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    },
+                    {
+                        "name": "condition",
+                        "description": "A condition to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "RewardCondition",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "description": "A filter to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "RewardFilter",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "contractsByTxHash",
+                    "description": "Reads and enables pagination through a set of `Contract`.",
+                    "args": [
+                    {
+                        "name": "first",
+                        "description": "Only read the first `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "last",
+                        "description": "Only read the last `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "description": "Skip the first `n` values from our `after` cursor, an alternative to cursor\nbased pagination. May not be used with `last`.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "before",
+                        "description": "Read all values in the set before (above) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "after",
+                        "description": "Read all values in the set after (below) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Contract`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    },
+                    {
+                        "name": "condition",
+                        "description": "A condition to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "ContractCondition",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "description": "A filter to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "ContractFilter",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "addressesByTxHash",
+                    "description": "Reads and enables pagination through a set of `Address`.",
+                    "args": [
+                    {
+                        "name": "first",
+                        "description": "Only read the first `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "last",
+                        "description": "Only read the last `n` values of the set.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "description": "Skip the first `n` values from our `after` cursor, an alternative to cursor\nbased pagination. May not be used with `last`.",
+                        "type":
+                        {
+                            "name": "Int",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "before",
+                        "description": "Read all values in the set before (above) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "after",
+                        "description": "Read all values in the set after (below) this cursor.",
+                        "type":
+                        {
+                            "name": "Cursor",
+                            "kind": "SCALAR"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Address`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    },
+                    {
+                        "name": "condition",
+                        "description": "A condition to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "AddressCondition",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "description": "A filter to be used in determining which values should be returned by the collection.",
+                        "type":
+                        {
+                            "name": "AddressFilter",
+                            "kind": "INPUT_OBJECT"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                }]
+            },
+            {
+                "name": "Int",
+                "kind": "SCALAR",
+                "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
+                "fields": null
+            },
+            {
+                "name": "BigInt",
+                "kind": "SCALAR",
+                "description": "A signed eight-byte integer. The upper big integer values are greater than the\nmax value for a JavaScript number. Therefore all big integers will be output as\nstrings and not numbers.",
+                "fields": null
+            },
+            {
+                "name": "Boolean",
+                "kind": "SCALAR",
+                "description": "The `Boolean` scalar type represents `true` or `false`.",
+                "fields": null
+            },
+            {
+                "name": "JSON",
+                "kind": "SCALAR",
+                "description": "The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).",
+                "fields": null
+            },
+            {
+                "name": "StateChangesConnection",
+                "kind": "OBJECT",
+                "description": "A connection to a list of `StateChange` values.",
+                "fields": [
+                {
+                    "name": "nodes",
+                    "description": "A list of `StateChange` objects.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "edges",
+                    "description": "A list of edges which contains the `StateChange` and cursor to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "pageInfo",
+                    "description": "Information to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "totalCount",
+                    "description": "The count of *all* `StateChange` you could get from the connection.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                }]
+            },
+            {
+                "name": "StateChange",
+                "kind": "OBJECT",
+                "description": null,
+                "fields": [
+                {
+                    "name": "nodeId",
+                    "description": "A globally unique identifier. Can be used in various places throughout the system to identify this single value.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "id",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "txHash",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "key",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "value",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "JSON",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "created",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `StateChange`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "UUID",
+                "kind": "SCALAR",
+                "description": "A universally unique identifier as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122).",
+                "fields": null
+            },
+            {
+                "name": "StateChangesEdge",
+                "kind": "OBJECT",
+                "description": "A `StateChange` edge in the connection.",
+                "fields": [
+                {
+                    "name": "cursor",
+                    "description": "A cursor for use in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Cursor",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "node",
+                    "description": "The `StateChange` at the end of the edge.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "StateChange",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "Cursor",
+                "kind": "SCALAR",
+                "description": "A location in a connection that can be used for resuming pagination.",
+                "fields": null
+            },
+            {
+                "name": "PageInfo",
+                "kind": "OBJECT",
+                "description": "Information about pagination in a connection.",
+                "fields": [
+                {
+                    "name": "hasNextPage",
+                    "description": "When paginating forwards, are there more items?",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "hasPreviousPage",
+                    "description": "When paginating backwards, are there more items?",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "startCursor",
+                    "description": "When paginating backwards, the cursor to continue.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Cursor",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "endCursor",
+                    "description": "When paginating forwards, the cursor to continue.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Cursor",
+                        "kind": "SCALAR"
+                    }
+                }]
+            },
+            {
+                "name": "StateChangesOrderBy",
+                "kind": "ENUM",
+                "description": "Methods to use when ordering `StateChange`.",
+                "fields": null
+            },
+            {
+                "name": "StateChangeCondition",
+                "kind": "INPUT_OBJECT",
+                "description": "A condition to be used against `StateChange` object types. All fields are tested\nfor equality and combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "StateChangeFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against `StateChange` object types. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "UUIDFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against UUID fields. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "StringFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against String fields. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "JSONFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against JSON fields. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "DatetimeFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against Datetime fields. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "RewardsConnection",
+                "kind": "OBJECT",
+                "description": "A connection to a list of `Reward` values.",
+                "fields": [
+                {
+                    "name": "nodes",
+                    "description": "A list of `Reward` objects.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "edges",
+                    "description": "A list of edges which contains the `Reward` and cursor to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "pageInfo",
+                    "description": "Information to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "totalCount",
+                    "description": "The count of *all* `Reward` you could get from the connection.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                }]
+            },
+            {
+                "name": "Reward",
+                "kind": "OBJECT",
+                "description": null,
+                "fields": [
+                {
+                    "name": "nodeId",
+                    "description": "A globally unique identifier. Can be used in various places throughout the system to identify this single value.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "id",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "txHash",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "type",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "key",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "value",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "created",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Reward`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "BigFloat",
+                "kind": "SCALAR",
+                "description": "A floating point number that requires more precision than IEEE 754 binary 64",
+                "fields": null
+            },
+            {
+                "name": "RewardsEdge",
+                "kind": "OBJECT",
+                "description": "A `Reward` edge in the connection.",
+                "fields": [
+                {
+                    "name": "cursor",
+                    "description": "A cursor for use in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Cursor",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "node",
+                    "description": "The `Reward` at the end of the edge.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Reward",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "RewardsOrderBy",
+                "kind": "ENUM",
+                "description": "Methods to use when ordering `Reward`.",
+                "fields": null
+            },
+            {
+                "name": "RewardCondition",
+                "kind": "INPUT_OBJECT",
+                "description": "A condition to be used against `Reward` object types. All fields are tested for equality and combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "RewardFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against `Reward` object types. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "BigFloatFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against BigFloat fields. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "ContractsConnection",
+                "kind": "OBJECT",
+                "description": "A connection to a list of `Contract` values.",
+                "fields": [
+                {
+                    "name": "nodes",
+                    "description": "A list of `Contract` objects.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "edges",
+                    "description": "A list of edges which contains the `Contract` and cursor to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "pageInfo",
+                    "description": "Information to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "totalCount",
+                    "description": "The count of *all* `Contract` you could get from the connection.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                }]
+            },
+            {
+                "name": "Contract",
+                "kind": "OBJECT",
+                "description": null,
+                "fields": [
+                {
+                    "name": "nodeId",
+                    "description": "A globally unique identifier. Can be used in various places throughout the system to identify this single value.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "txHash",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "name",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "code",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "xsc0001",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Boolean",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "created",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Contract`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "ContractsEdge",
+                "kind": "OBJECT",
+                "description": "A `Contract` edge in the connection.",
+                "fields": [
+                {
+                    "name": "cursor",
+                    "description": "A cursor for use in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Cursor",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "node",
+                    "description": "The `Contract` at the end of the edge.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Contract",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "ContractsOrderBy",
+                "kind": "ENUM",
+                "description": "Methods to use when ordering `Contract`.",
+                "fields": null
+            },
+            {
+                "name": "ContractCondition",
+                "kind": "INPUT_OBJECT",
+                "description": "A condition to be used against `Contract` object types. All fields are tested\nfor equality and combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "ContractFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against `Contract` object types. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "BooleanFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against Boolean fields. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "AddressesOrderBy",
+                "kind": "ENUM",
+                "description": "Methods to use when ordering `Address`.",
+                "fields": null
+            },
+            {
+                "name": "AddressCondition",
+                "kind": "INPUT_OBJECT",
+                "description": "A condition to be used against `Address` object types. All fields are tested for equality and combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "AddressFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against `Address` object types. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "AddressesEdge",
+                "kind": "OBJECT",
+                "description": "A `Address` edge in the connection.",
+                "fields": [
+                {
+                    "name": "cursor",
+                    "description": "A cursor for use in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Cursor",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "node",
+                    "description": "The `Address` at the end of the edge.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Address",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "StatesConnection",
+                "kind": "OBJECT",
+                "description": "A connection to a list of `State` values.",
+                "fields": [
+                {
+                    "name": "nodes",
+                    "description": "A list of `State` objects.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "edges",
+                    "description": "A list of edges which contains the `State` and cursor to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "pageInfo",
+                    "description": "Information to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "totalCount",
+                    "description": "The count of *all* `State` you could get from the connection.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                }]
+            },
+            {
+                "name": "State",
+                "kind": "OBJECT",
+                "description": null,
+                "fields": [
+                {
+                    "name": "nodeId",
+                    "description": "A globally unique identifier. Can be used in various places throughout the system to identify this single value.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "key",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "value",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "JSON",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "updated",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                }]
+            },
+            {
+                "name": "StatesEdge",
+                "kind": "OBJECT",
+                "description": "A `State` edge in the connection.",
+                "fields": [
+                {
+                    "name": "cursor",
+                    "description": "A cursor for use in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Cursor",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "node",
+                    "description": "The `State` at the end of the edge.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "State",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "StatesOrderBy",
+                "kind": "ENUM",
+                "description": "Methods to use when ordering `State`.",
+                "fields": null
+            },
+            {
+                "name": "StateCondition",
+                "kind": "INPUT_OBJECT",
+                "description": "A condition to be used against `State` object types. All fields are tested for equality and combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "StateFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against `State` object types. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "TransactionsConnection",
+                "kind": "OBJECT",
+                "description": "A connection to a list of `Transaction` values.",
+                "fields": [
+                {
+                    "name": "nodes",
+                    "description": "A list of `Transaction` objects.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "edges",
+                    "description": "A list of edges which contains the `Transaction` and cursor to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "pageInfo",
+                    "description": "Information to aid in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "totalCount",
+                    "description": "The count of *all* `Transaction` you could get from the connection.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                }]
+            },
+            {
+                "name": "TransactionsEdge",
+                "kind": "OBJECT",
+                "description": "A `Transaction` edge in the connection.",
+                "fields": [
+                {
+                    "name": "cursor",
+                    "description": "A cursor for use in pagination.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Cursor",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "node",
+                    "description": "The `Transaction` at the end of the edge.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "TransactionsOrderBy",
+                "kind": "ENUM",
+                "description": "Methods to use when ordering `Transaction`.",
+                "fields": null
+            },
+            {
+                "name": "TransactionCondition",
+                "kind": "INPUT_OBJECT",
+                "description": "A condition to be used against `Transaction` object types. All fields are tested\nfor equality and combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "TransactionFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against `Transaction` object types. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "IntFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against Int fields. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "BigIntFilter",
+                "kind": "INPUT_OBJECT",
+                "description": "A filter to be used against BigInt fields. All fields are combined with a logical ‘and.’",
+                "fields": null
+            },
+            {
+                "name": "Mutation",
+                "kind": "OBJECT",
+                "description": "The root mutation type which contains root level fields which mutate data.",
+                "fields": [
+                {
+                    "name": "createAddress",
+                    "description": "Creates a single `Address`.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "CreateAddressPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "createContract",
+                    "description": "Creates a single `Contract`.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "CreateContractPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "createReward",
+                    "description": "Creates a single `Reward`.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "CreateRewardPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "createState",
+                    "description": "Creates a single `State`.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "CreateStatePayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "createStateChange",
+                    "description": "Creates a single `StateChange`.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "CreateStateChangePayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "createTransaction",
+                    "description": "Creates a single `Transaction`.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "CreateTransactionPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateAddress",
+                    "description": "Updates a single `Address` using its globally unique id and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateAddressPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateAddressByAddress",
+                    "description": "Updates a single `Address` using a unique key and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateAddressPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateContract",
+                    "description": "Updates a single `Contract` using its globally unique id and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateContractPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateContractByName",
+                    "description": "Updates a single `Contract` using a unique key and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateContractPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateReward",
+                    "description": "Updates a single `Reward` using its globally unique id and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateRewardPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateRewardById",
+                    "description": "Updates a single `Reward` using a unique key and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateRewardPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateState",
+                    "description": "Updates a single `State` using its globally unique id and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateStatePayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateStateByKey",
+                    "description": "Updates a single `State` using a unique key and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateStatePayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateStateChange",
+                    "description": "Updates a single `StateChange` using its globally unique id and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateStateChangePayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateStateChangeById",
+                    "description": "Updates a single `StateChange` using a unique key and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateStateChangePayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateTransaction",
+                    "description": "Updates a single `Transaction` using its globally unique id and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateTransactionPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "updateTransactionByHash",
+                    "description": "Updates a single `Transaction` using a unique key and a patch.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "UpdateTransactionPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteAddress",
+                    "description": "Deletes a single `Address` using its globally unique id.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteAddressPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteAddressByAddress",
+                    "description": "Deletes a single `Address` using a unique key.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteAddressPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteContract",
+                    "description": "Deletes a single `Contract` using its globally unique id.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteContractPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteContractByName",
+                    "description": "Deletes a single `Contract` using a unique key.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteContractPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteReward",
+                    "description": "Deletes a single `Reward` using its globally unique id.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteRewardPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteRewardById",
+                    "description": "Deletes a single `Reward` using a unique key.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteRewardPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteState",
+                    "description": "Deletes a single `State` using its globally unique id.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteStatePayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteStateByKey",
+                    "description": "Deletes a single `State` using a unique key.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteStatePayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteStateChange",
+                    "description": "Deletes a single `StateChange` using its globally unique id.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteStateChangePayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteStateChangeById",
+                    "description": "Deletes a single `StateChange` using a unique key.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteStateChangePayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteTransaction",
+                    "description": "Deletes a single `Transaction` using its globally unique id.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteTransactionPayload",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deleteTransactionByHash",
+                    "description": "Deletes a single `Transaction` using a unique key.",
+                    "args": [
+                    {
+                        "name": "input",
+                        "description": "The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "NON_NULL"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "DeleteTransactionPayload",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "CreateAddressPayload",
+                "kind": "OBJECT",
+                "description": "The output of our create `Address` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "address",
+                    "description": "The `Address` that was created by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Address",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Address`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "addressEdge",
+                    "description": "An edge for our `Address`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Address`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "AddressesEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "CreateAddressInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the create `Address` mutation.",
+                "fields": null
+            },
+            {
+                "name": "AddressInput",
+                "kind": "INPUT_OBJECT",
+                "description": "An input for mutations affecting `Address`",
+                "fields": null
+            },
+            {
+                "name": "CreateContractPayload",
+                "kind": "OBJECT",
+                "description": "The output of our create `Contract` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "contract",
+                    "description": "The `Contract` that was created by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Contract",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Contract`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "contractEdge",
+                    "description": "An edge for our `Contract`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Contract`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "ContractsEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "CreateContractInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the create `Contract` mutation.",
+                "fields": null
+            },
+            {
+                "name": "ContractInput",
+                "kind": "INPUT_OBJECT",
+                "description": "An input for mutations affecting `Contract`",
+                "fields": null
+            },
+            {
+                "name": "CreateRewardPayload",
+                "kind": "OBJECT",
+                "description": "The output of our create `Reward` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "reward",
+                    "description": "The `Reward` that was created by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Reward",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Reward`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "rewardEdge",
+                    "description": "An edge for our `Reward`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Reward`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "RewardsEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "CreateRewardInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the create `Reward` mutation.",
+                "fields": null
+            },
+            {
+                "name": "RewardInput",
+                "kind": "INPUT_OBJECT",
+                "description": "An input for mutations affecting `Reward`",
+                "fields": null
+            },
+            {
+                "name": "CreateStatePayload",
+                "kind": "OBJECT",
+                "description": "The output of our create `State` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "state",
+                    "description": "The `State` that was created by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "State",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "stateEdge",
+                    "description": "An edge for our `State`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `State`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "StatesEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "CreateStateInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the create `State` mutation.",
+                "fields": null
+            },
+            {
+                "name": "StateInput",
+                "kind": "INPUT_OBJECT",
+                "description": "An input for mutations affecting `State`",
+                "fields": null
+            },
+            {
+                "name": "CreateStateChangePayload",
+                "kind": "OBJECT",
+                "description": "The output of our create `StateChange` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "stateChange",
+                    "description": "The `StateChange` that was created by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "StateChange",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `StateChange`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "stateChangeEdge",
+                    "description": "An edge for our `StateChange`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `StateChange`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "StateChangesEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "CreateStateChangeInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the create `StateChange` mutation.",
+                "fields": null
+            },
+            {
+                "name": "StateChangeInput",
+                "kind": "INPUT_OBJECT",
+                "description": "An input for mutations affecting `StateChange`",
+                "fields": null
+            },
+            {
+                "name": "CreateTransactionPayload",
+                "kind": "OBJECT",
+                "description": "The output of our create `Transaction` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "transaction",
+                    "description": "The `Transaction` that was created by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionEdge",
+                    "description": "An edge for our `Transaction`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Transaction`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "TransactionsEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "CreateTransactionInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the create `Transaction` mutation.",
+                "fields": null
+            },
+            {
+                "name": "TransactionInput",
+                "kind": "INPUT_OBJECT",
+                "description": "An input for mutations affecting `Transaction`",
+                "fields": null
+            },
+            {
+                "name": "UpdateAddressPayload",
+                "kind": "OBJECT",
+                "description": "The output of our update `Address` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "address",
+                    "description": "The `Address` that was updated by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Address",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Address`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "addressEdge",
+                    "description": "An edge for our `Address`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Address`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "AddressesEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "UpdateAddressInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateAddress` mutation.",
+                "fields": null
+            },
+            {
+                "name": "AddressPatch",
+                "kind": "INPUT_OBJECT",
+                "description": "Represents an update to a `Address`. Fields that are set will be updated.",
+                "fields": null
+            },
+            {
+                "name": "UpdateAddressByAddressInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateAddressByAddress` mutation.",
+                "fields": null
+            },
+            {
+                "name": "UpdateContractPayload",
+                "kind": "OBJECT",
+                "description": "The output of our update `Contract` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "contract",
+                    "description": "The `Contract` that was updated by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Contract",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Contract`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "contractEdge",
+                    "description": "An edge for our `Contract`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Contract`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "ContractsEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "UpdateContractInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateContract` mutation.",
+                "fields": null
+            },
+            {
+                "name": "ContractPatch",
+                "kind": "INPUT_OBJECT",
+                "description": "Represents an update to a `Contract`. Fields that are set will be updated.",
+                "fields": null
+            },
+            {
+                "name": "UpdateContractByNameInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateContractByName` mutation.",
+                "fields": null
+            },
+            {
+                "name": "UpdateRewardPayload",
+                "kind": "OBJECT",
+                "description": "The output of our update `Reward` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "reward",
+                    "description": "The `Reward` that was updated by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Reward",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Reward`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "rewardEdge",
+                    "description": "An edge for our `Reward`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Reward`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "RewardsEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "UpdateRewardInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateReward` mutation.",
+                "fields": null
+            },
+            {
+                "name": "RewardPatch",
+                "kind": "INPUT_OBJECT",
+                "description": "Represents an update to a `Reward`. Fields that are set will be updated.",
+                "fields": null
+            },
+            {
+                "name": "UpdateRewardByIdInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateRewardById` mutation.",
+                "fields": null
+            },
+            {
+                "name": "UpdateStatePayload",
+                "kind": "OBJECT",
+                "description": "The output of our update `State` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "state",
+                    "description": "The `State` that was updated by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "State",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "stateEdge",
+                    "description": "An edge for our `State`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `State`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "StatesEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "UpdateStateInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateState` mutation.",
+                "fields": null
+            },
+            {
+                "name": "StatePatch",
+                "kind": "INPUT_OBJECT",
+                "description": "Represents an update to a `State`. Fields that are set will be updated.",
+                "fields": null
+            },
+            {
+                "name": "UpdateStateByKeyInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateStateByKey` mutation.",
+                "fields": null
+            },
+            {
+                "name": "UpdateStateChangePayload",
+                "kind": "OBJECT",
+                "description": "The output of our update `StateChange` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "stateChange",
+                    "description": "The `StateChange` that was updated by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "StateChange",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `StateChange`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "stateChangeEdge",
+                    "description": "An edge for our `StateChange`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `StateChange`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "StateChangesEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "UpdateStateChangeInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateStateChange` mutation.",
+                "fields": null
+            },
+            {
+                "name": "StateChangePatch",
+                "kind": "INPUT_OBJECT",
+                "description": "Represents an update to a `StateChange`. Fields that are set will be updated.",
+                "fields": null
+            },
+            {
+                "name": "UpdateStateChangeByIdInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateStateChangeById` mutation.",
+                "fields": null
+            },
+            {
+                "name": "UpdateTransactionPayload",
+                "kind": "OBJECT",
+                "description": "The output of our update `Transaction` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "transaction",
+                    "description": "The `Transaction` that was updated by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionEdge",
+                    "description": "An edge for our `Transaction`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Transaction`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "TransactionsEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "UpdateTransactionInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateTransaction` mutation.",
+                "fields": null
+            },
+            {
+                "name": "TransactionPatch",
+                "kind": "INPUT_OBJECT",
+                "description": "Represents an update to a `Transaction`. Fields that are set will be updated.",
+                "fields": null
+            },
+            {
+                "name": "UpdateTransactionByHashInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `updateTransactionByHash` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteAddressPayload",
+                "kind": "OBJECT",
+                "description": "The output of our delete `Address` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "address",
+                    "description": "The `Address` that was deleted by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Address",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deletedAddressId",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "ID",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Address`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "addressEdge",
+                    "description": "An edge for our `Address`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Address`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "AddressesEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "DeleteAddressInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteAddress` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteAddressByAddressInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteAddressByAddress` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteContractPayload",
+                "kind": "OBJECT",
+                "description": "The output of our delete `Contract` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "contract",
+                    "description": "The `Contract` that was deleted by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Contract",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deletedContractId",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "ID",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Contract`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "contractEdge",
+                    "description": "An edge for our `Contract`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Contract`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "ContractsEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "DeleteContractInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteContract` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteContractByNameInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteContractByName` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteRewardPayload",
+                "kind": "OBJECT",
+                "description": "The output of our delete `Reward` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "reward",
+                    "description": "The `Reward` that was deleted by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Reward",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deletedRewardId",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "ID",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `Reward`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "rewardEdge",
+                    "description": "An edge for our `Reward`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Reward`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "RewardsEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "DeleteRewardInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteReward` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteRewardByIdInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteRewardById` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteStatePayload",
+                "kind": "OBJECT",
+                "description": "The output of our delete `State` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "state",
+                    "description": "The `State` that was deleted by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "State",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deletedStateId",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "ID",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "stateEdge",
+                    "description": "An edge for our `State`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `State`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "StatesEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "DeleteStateInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteState` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteStateByKeyInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteStateByKey` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteStateChangePayload",
+                "kind": "OBJECT",
+                "description": "The output of our delete `StateChange` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "stateChange",
+                    "description": "The `StateChange` that was deleted by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "StateChange",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deletedStateChangeId",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "ID",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionByTxHash",
+                    "description": "Reads a single `Transaction` that is related to this `StateChange`.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "stateChangeEdge",
+                    "description": "An edge for our `StateChange`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `StateChange`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "StateChangesEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "DeleteStateChangeInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteStateChange` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteStateChangeByIdInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteStateChangeById` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteTransactionPayload",
+                "kind": "OBJECT",
+                "description": "The output of our delete `Transaction` mutation.",
+                "fields": [
+                {
+                    "name": "clientMutationId",
+                    "description": "The exact same `clientMutationId` that was provided in the mutation input,\nunchanged and unused. May be used by a client to track mutations.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "transaction",
+                    "description": "The `Transaction` that was deleted by this mutation.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Transaction",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "deletedTransactionId",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "ID",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "query",
+                    "description": "Our root query field type. Allows us to run any query from our mutation payload.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "Query",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "transactionEdge",
+                    "description": "An edge for our `Transaction`. May be used by Relay 1.",
+                    "args": [
+                    {
+                        "name": "orderBy",
+                        "description": "The method to use when ordering `Transaction`.",
+                        "type":
+                        {
+                            "name": null,
+                            "kind": "LIST"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": "TransactionsEdge",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "DeleteTransactionInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteTransaction` mutation.",
+                "fields": null
+            },
+            {
+                "name": "DeleteTransactionByHashInput",
+                "kind": "INPUT_OBJECT",
+                "description": "All input for the `deleteTransactionByHash` mutation.",
+                "fields": null
+            },
+            {
+                "name": "__Schema",
+                "kind": "OBJECT",
+                "description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
+                "fields": [
+                {
+                    "name": "description",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "types",
+                    "description": "A list of all types supported by this server.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "queryType",
+                    "description": "The type that query operations will be rooted at.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "mutationType",
+                    "description": "If this server supports mutation, the type that mutation operations will be rooted at.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "__Type",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "subscriptionType",
+                    "description": "If this server support subscription, the type that subscription operations will be rooted at.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "__Type",
+                        "kind": "OBJECT"
+                    }
+                },
+                {
+                    "name": "directives",
+                    "description": "A list of all directives supported by this server.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                }]
+            },
+            {
+                "name": "__Type",
+                "kind": "OBJECT",
+                "description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
+                "fields": [
+                {
+                    "name": "kind",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "name",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "description",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "specifiedByUrl",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "description": null,
+                    "args": [
+                    {
+                        "name": "includeDeprecated",
+                        "description": null,
+                        "type":
+                        {
+                            "name": "Boolean",
+                            "kind": "SCALAR"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "LIST"
+                    }
+                },
+                {
+                    "name": "interfaces",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "LIST"
+                    }
+                },
+                {
+                    "name": "possibleTypes",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "LIST"
+                    }
+                },
+                {
+                    "name": "enumValues",
+                    "description": null,
+                    "args": [
+                    {
+                        "name": "includeDeprecated",
+                        "description": null,
+                        "type":
+                        {
+                            "name": "Boolean",
+                            "kind": "SCALAR"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "LIST"
+                    }
+                },
+                {
+                    "name": "inputFields",
+                    "description": null,
+                    "args": [
+                    {
+                        "name": "includeDeprecated",
+                        "description": null,
+                        "type":
+                        {
+                            "name": "Boolean",
+                            "kind": "SCALAR"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "LIST"
+                    }
+                },
+                {
+                    "name": "ofType",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "__Type",
+                        "kind": "OBJECT"
+                    }
+                }]
+            },
+            {
+                "name": "__TypeKind",
+                "kind": "ENUM",
+                "description": "An enum describing what kind of type a given `__Type` is.",
+                "fields": null
+            },
+            {
+                "name": "__Field",
+                "kind": "OBJECT",
+                "description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
+                "fields": [
+                {
+                    "name": "name",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "description",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "args",
+                    "description": null,
+                    "args": [
+                    {
+                        "name": "includeDeprecated",
+                        "description": null,
+                        "type":
+                        {
+                            "name": "Boolean",
+                            "kind": "SCALAR"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "type",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "isDeprecated",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "deprecationReason",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                }]
+            },
+            {
+                "name": "__InputValue",
+                "kind": "OBJECT",
+                "description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
+                "fields": [
+                {
+                    "name": "name",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "description",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "type",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "defaultValue",
+                    "description": "A GraphQL-formatted string representing the default value for this input value.",
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "isDeprecated",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "deprecationReason",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                }]
+            },
+            {
+                "name": "__EnumValue",
+                "kind": "OBJECT",
+                "description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
+                "fields": [
+                {
+                    "name": "name",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "description",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "isDeprecated",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "deprecationReason",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                }]
+            },
+            {
+                "name": "__Directive",
+                "kind": "OBJECT",
+                "description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
+                "fields": [
+                {
+                    "name": "name",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "description",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": "String",
+                        "kind": "SCALAR"
+                    }
+                },
+                {
+                    "name": "isRepeatable",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "locations",
+                    "description": null,
+                    "args": [],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                },
+                {
+                    "name": "args",
+                    "description": null,
+                    "args": [
+                    {
+                        "name": "includeDeprecated",
+                        "description": null,
+                        "type":
+                        {
+                            "name": "Boolean",
+                            "kind": "SCALAR"
+                        }
+                    }],
+                    "type":
+                    {
+                        "name": null,
+                        "kind": "NON_NULL"
+                    }
+                }]
+            },
+            {
+                "name": "__DirectiveLocation",
+                "kind": "ENUM",
+                "description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
+                "fields": null
+            }]
+        }
+    }
+}
