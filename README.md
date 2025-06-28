@@ -1,8 +1,18 @@
-# xian-ai-guides
-context knowledge created to guide LLMs for generating code
+# Xian AI Guides
 
-Upload to LLMs and start prompting
+Context knowledge to guide LLMs for generating Xian smart contracts, GraphQL queries, and test cases.
 
-![image](https://github.com/user-attachments/assets/3fe02e4f-b400-4c23-bf35-e1f400b5decc)
+## Purpose
 
-![image](https://github.com/user-attachments/assets/a19c0634-b5f0-4c09-8f79-6a2b9daaf237)
+Upload these files to LLMs to help with:
+- **Smart contract generation** using Xian's Contracting engine
+- **GraphQL query generation** for blockchain data
+- **Testing and test case creation**
+
+## Usage
+
+1. Upload relevant files to your LLM
+2. Specify what you want to generate (contract, query, or tests)
+3. Reference the uploaded context in your prompts
+
+Example: *"Using the contracting guide provided, create a staking contract for Xian blockchain"*
