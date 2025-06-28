@@ -17,7 +17,8 @@ EXPLICITLY FORBIDDEN:
 - Classes (class), async/await, lambda
 - Exception handling (try/except/finally)
 - Metaprogramming (eval, exec, getattr)
-- Underscore prefixes (__private_var)
+- Underscore prefixes/suffixes (__private_var, var__)
+- Standard library imports (os, sys, json, etc.)
 
 2. CONTRACT STRUCTURE
 -------------------
@@ -40,7 +41,25 @@ def transfer(to: str, amount: int):
     balances[sender] -= amount
     balances[to] += amount
 
-3. TYPE SYSTEM & ANNOTATIONS
+3. IMPORT SYSTEM RULES
+--------------------
+ALLOWED IMPORTS (top-level only):
+import importlib  # For cross-contract calls only
+
+CONTRACTING-SPECIFIC MODULES:
+import datetime    # Custom Datetime/Timedelta classes
+import decimal     # ContractingDecimal for precision
+import hashlib     # sha3(), sha256() functions
+import crypto      # verify(), key_is_valid() functions
+import random      # Deterministic random (must call seed() first)
+
+FORBIDDEN IMPORTS:
+from datetime import datetime  # ImportFrom banned entirely
+import os                      # All standard library banned
+import json                    # All standard library banned
+import sys                     # All builtins banned
+
+4. TYPE SYSTEM & ANNOTATIONS
 -------------------------
 VALID PARAMETER TYPES (NO RETURN TYPES):
 @export
@@ -53,9 +72,20 @@ def valid_annotations(
 
 FORBIDDEN:
 - Return type annotations (-> str, -> int, -> None, etc.)
-- Contract addresses in contracting are strings prefixed with "con_" (e.g., "con_xsc001").
+- Contract addresses are strings prefixed with "con_" (e.g., "con_xsc001")
 
-4. STATE MANAGEMENT
+5. DECORATOR CONSTRAINTS
+----------------------
+STRICT RULES:
+- Maximum ONE decorator per function
+- Only ONE @construct function per contract
+- Functions without decorators become private (auto-prefixed with __)
+
+VALID DECORATORS:
+@construct  # Constructor (only one allowed)
+@export     # Public function
+
+6. STATE MANAGEMENT
 -----------------
 ALLOWED ORM OBJECTS:
 # Single-value storage
@@ -70,25 +100,45 @@ token_supply = ForeignVariable(
     foreign_name='total_supply'
 )
 
-5. BLOCK CONTEXT & UTILITIES
---------------------------
+ORM CONSTRUCTION RULES:
+# CORRECT
+balances = Hash()
+supply = Variable()
+
+# FORBIDDEN 
+balances = Hash(contract='token', name='bal')  # Auto-added by compiler
+x, y = Hash(), Variable()                      # No tuple unpacking
+
+7. CONTEXT VARIABLES & BLOCK INFO
+-------------------------------
+AVAILABLE CONTEXT:
 @export
-def get_block_info() -> dict:
+def get_context_info():
+    sender = ctx.caller      # Who called this function
+    signer = ctx.signer      # Transaction signer  
+    contract = ctx.this      # Current contract name
+    owner = ctx.owner        # Contract owner
+    timestamp = now          # Current block timestamp
+    height = block_num       # Current block number
+    hash_val = block_hash    # Current block hash
     return {
-        "height": block_num,     # Current block number (int)
-        "hash": block_hash,      # Current block hash (str)
-        "time": now              # UTC timestamp (datetime)
+        "caller": sender,
+        "signer": signer,
+        "contract": contract,
+        "timestamp": timestamp,
+        "height": height,
+        "hash": hash_val
     }
 
-@export
-def verify_signer(pubkey: str, sig: str) -> bool:
-    return verify_signature(
-        pubkey=pubkey,
-        signature=sig,
-        message=ctx.signer
-    )
+8. VARIABLE NAMING RESTRICTIONS
+-----------------------------
+FORBIDDEN NAMES:
+- No function args can reuse ORM variable names
+- No leading/trailing underscores (name_, _name, __name__)
+- Reserved words: rt, Hash, Variable, LogEvent
+- No ctx, now, block_num, block_hash as variable names
 
-6. ALLOWED CONTROL FLOW
+9. ALLOWED CONTROL FLOW
 ---------------------
 PERMITTED PATTERNS:
 # If-Elif-Else
@@ -104,7 +154,7 @@ for i in range(10):
 # Assertions (no exceptions!)
 assert ctx.signer == owner.get(), "Unauthorized"
 
-7. CROSS-CONTRACT CALLS
+10. CROSS-CONTRACT CALLS
 ---------------------
 @export
 def call_other_contract():
@@ -121,124 +171,93 @@ def call_other_contract():
     # Execute call
     token.transfer(amount=100, to=ctx.caller)
 
-8. OPTIMIZATION RULES
-------------------
-# High cost: Write operations (25 stamps/byte)
-balances[ctx.caller] = 500  # Minimize writes
+11. AUTOMATIC TYPE CONVERSION
+--------------------------
+# Float literals auto-convert to ContractingDecimal
+price = 10.5  # Becomes ContractingDecimal('10.5')
 
-# Low cost: Read operations (1 stamp/byte)
-balance = balances[ctx.caller]  # Reuse reads
+# Use decimal() constructor for operations
+result = decimal('100.0') + decimal('50.25')
 
-KEY VALIDATION CHECKLIST FOR LLMs
-------------------------------
-1. No random module – deterministic logic only
-2. No nested imports – use top-level importlib
-3. contract should at least have one function with @export decorator
-4. Variables must use Variable()/Hash(), not native types
+# Avoid float arithmetic issues
+total = decimal(str(user_input))  # Convert safely
 
-9. EVENT LOGGING
+12. SYSTEM LIMITS
+---------------
+HASH DIMENSIONS: Maximum 16 levels
+balances[user][token][pool]  # 3 dimensions ✓
+data[a][b][c]...[p]         # 16 dimensions ✓  
+data[a][b]...[q]            # 17 dimensions ✗
+
+KEY SIZE: Maximum 1024 bytes per key
+STAMP COSTS: Reads=1/byte, Writes=25/byte
+RECURSION: Maximum 1024 levels
+
+13. EVENT LOGGING
 --------------
-Events are used to record significant contract state changes. Follow these rules to define and emit events:
+Events record significant contract state changes.
 
-EVENT DEFINITION
-Define events at the top level using LogEvent:
-
+EVENT DEFINITION:
 # Syntax
 EventName = LogEvent(
     event="EventNameString",
     params={
         "param1": {"type": <valid_type>, "idx": <boolean>},
         "param2": {"type": <valid_type>, "idx": <boolean>},
-        ...
     }
 )
 
-# Example (from xsc001.py)
+# Example
 TransferEvent = LogEvent(
     event="Transfer",
     params={
-        "from": {"type": str, "idx": True},   # `idx=True` enables filtering by this field
+        "from": {"type": str, "idx": True},   # idx=True enables filtering
         "to": {"type": str, "idx": True},
         "amount": {"type": (int, float, decimal)}
     }
 )
-Rules:
 
-event: Must be a unique, descriptive string.
-
-params:
-
-Use primitive types (str, int, float) or tuples for multiple allowed types.
-
-idx=True marks the parameter as indexable (for efficient querying).
-
-Complex types (e.g., datetime) must be serialized to str before logging.
-
-EMITTING EVENTS
-Call the event instance with a dictionary of parameters:
-
-# Syntax
-EventName({"param1": value1, "param2": value2, ...})
-
-# Example (from xsc001.py)
+EMITTING EVENTS:
 @export
 def transfer(amount: float, to: str):
-    ...
+    # ... transfer logic ...
     TransferEvent({"from": ctx.caller, "to": to, "amount": amount})
-Rules:
 
-All parameters defined in the event must be provided.
+RULES:
+- Use primitive types (str, int, float) or tuples for multiple types
+- idx=True marks parameters as indexable for queries
+- All defined parameters must be provided when emitting
+- Convert non-primitives to str: str(now) for datetime
 
-Data types must match the params definition (e.g., amount must be int/float).
+KEY VALIDATION CHECKLIST FOR LLMs
+------------------------------
+1. No random module – deterministic logic only
+2. No nested imports – use top-level importlib only
+3. Contract must have at least one @export function
+4. Variables must use Variable()/Hash(), not native types
+5. No return type annotations (-> type) allowed
+6. No underscore prefixes/suffixes in any names
+7. No reuse of ORM names as function arguments
+8. Max one decorator per function
+9. Only one @construct function per contract
+10. No tuple unpacking in ORM assignments
+11. Float literals auto-convert to ContractingDecimal
+12. Use ctx.caller, ctx.signer for transaction context
+13. Import only allowed contracting modules
+14. Hash maximum 16 dimensions
+15. All event parameters must match defined schema
 
-Use str() to serialize non-primitive types (e.g., datetime → str(now)).
+OPTIMIZATION RULES
+-----------------
+# High cost: Write operations (25 stamps/byte)
+balances[ctx.caller] = 500  # Minimize writes
 
-BEST PRACTICES
+# Low cost: Read operations (1 stamp/byte)  
+balance = balances[ctx.caller]  # Reuse reads
 
-Indexing: Mark frequently queried fields (e.g., addresses, IDs) with idx=True.
-
-Naming: Use past-tense verbs (e.g., Transfer, Approval) for event names.
-
-Data Minimization: Log only essential data to reduce gas/stamp costs.
-
-Consistency: Reuse event definitions across related functions (see TransferEvent in all contracts).
-
-FULL EXAMPLE
-
-# Event definition
-StreamCreatedEvent = LogEvent(
-    event="StreamCreated",
-    params={
-        "sender": {"type": str, "idx": True},
-        "receiver": {"type": str, "idx": True},
-        "stream_id": {"type": str, "idx": True},
-        "rate": {"type": (int, float, decimal)},
-        "begins": {"type": str},  # datetime serialized to string
-        "closes": {"type": str},
-    }
-)
-
-# Emitting the event (from xsc003.py)
-@export
-def create_stream(...):
-    ...
-    StreamCreatedEvent({
-        "sender": sender,
-        "receiver": receiver,
-        "stream_id": stream_id,
-        "rate": rate,
-        "begins": str(begins),
-        "closes": str(closes)
-    })
-    
-Validation Checklist for LLMs:
-
-Are all event parameters explicitly defined with types?
-
-Does the emitted data match the params schema (types, required fields)?
-
-Are non-primitive types (e.g., datetime) converted to str?
-
-Are critical query fields (addresses, IDs) marked with idx=True?
+# Batch operations when possible
+user_balance = balances[ctx.caller]
+user_balance += amount
+balances[ctx.caller] = user_balance  # Single write
 
 [END OF GUIDE]
