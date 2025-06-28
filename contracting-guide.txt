@@ -42,15 +42,17 @@ def transfer(to: str, amount: int):
 
 3. TYPE SYSTEM & ANNOTATIONS
 -------------------------
-VALID PARAMETER/RETURN TYPES:
+VALID PARAMETER TYPES (NO RETURN TYPES):
 @export
 def valid_annotations(
     name: str,                   # Primitive
     metadata: dict,              # Key-value store
     deadline: datetime.datetime  # Special types
-) -> None:                       # Optional return
+):                               # NO return type annotations allowed
     pass
 
+FORBIDDEN:
+- Return type annotations (-> str, -> int, -> None, etc.)
 - Contract addresses in contracting are strings prefixed with "con_" (e.g., "con_xsc001").
 
 4. STATE MANAGEMENT
