@@ -226,6 +226,7 @@ def transfer(amount: float, to: str):
 RULES:
 - Use primitive types (str, int, float) or tuples for multiple types
 - idx=True marks parameters as indexable for queries
+- **Maximum 3 indexed parameters (idx=True) per event**
 - All defined parameters must be provided when emitting
 - Convert non-primitives to str: str(now) for datetime
 
@@ -246,6 +247,7 @@ KEY VALIDATION CHECKLIST FOR LLMs
 13. Import only allowed contracting modules
 14. Hash maximum 16 dimensions
 15. All event parameters must match defined schema
+16. **LogEvent maximum 3 indexed parameters (idx=True)**
 
 OPTIMIZATION RULES
 -----------------
