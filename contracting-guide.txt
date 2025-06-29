@@ -109,6 +109,17 @@ supply = Variable()
 balances = Hash(contract='token', name='bal')  # Auto-added by compiler
 x, y = Hash(), Variable()                      # No tuple unpacking
 
+HASH LIMITATIONS:
+# FORBIDDEN - Cannot use 'in' operator with Hash
+if pool_id in pools:  # ✗ Raises exception
+
+# CORRECT - Check if value is None
+pool = pools[pool_id]
+if pool is not None:  # ✓ Proper existence check
+
+# Hash returns default_value (None) for missing keys
+user_balance = balances[user]  # Returns 0 if default_value=0, None otherwise
+
 7. CONTEXT VARIABLES & BLOCK INFO
 -------------------------------
 AVAILABLE CONTEXT:
@@ -248,6 +259,7 @@ KEY VALIDATION CHECKLIST FOR LLMs
 14. Hash maximum 16 dimensions
 15. All event parameters must match defined schema
 16. **LogEvent maximum 3 indexed parameters (idx=True)**
+17. **Cannot use 'in' operator with Hash - check if value is None instead**
 
 OPTIMIZATION RULES
 -----------------
