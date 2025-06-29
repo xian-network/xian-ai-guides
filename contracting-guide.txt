@@ -1,5 +1,5 @@
-CONTRACTING SMART CONTRACT DEVELOPMENT GUIDE
-============================================
+XIAN NETWORK - SMART CONTRACT DEVELOPMENT GUIDE
+===============================================
 
 1. CORE LANGUAGE RULES
 --------------------
