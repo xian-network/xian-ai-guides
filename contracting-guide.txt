@@ -274,4 +274,32 @@ user_balance = balances[ctx.caller]
 user_balance += amount
 balances[ctx.caller] = user_balance  # Single write
 
+NUANCES
+-------
+# Datetime multiplication
+5 * datetime.DAYS # does not work
+>> TypeError: unsupported operand type(s) for *: 'int' and 'Timedelta'
+
+datetime.DAYS * 5 # works
+
+# Decimal argument
+decimal(0.0) # does not work
+>> TypeError: conversion from ContractingDecimal to Decimal is not supported
+
+decimal("0.0") # works
+
+# Division first before multiplication does not round up properly
+amount_of_take_token_to_withdraw = (funder["amount_contributed"] / pool["amount_received"]) * pool["otc_actual_received_amount"] 
+>> AssertionError: 149.99999999999999999999999999985 != 150
+
+# Multiplication first before division
+amount_of_take_token_to_withdraw = (funder["amount_contributed"] * pool["otc_actual_received_amount"]) / pool["amount_received"] # rounds up properly
+
+# Pass keyword-argument to contract method
+exploit_contract.setlisting(listing_id) # does not work
+>> TypeError: AbstractContract._abstract_function_call() got multiple values for argument 'signer'
+
+exploit_contract.setlisting(l=listing_id) # works
+
+
 [END OF GUIDE]
