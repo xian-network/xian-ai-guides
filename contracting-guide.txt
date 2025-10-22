@@ -17,6 +17,7 @@ EXPLICITLY FORBIDDEN:
 - Classes (class), async/await, lambda
 - Exception handling (try/except/finally)
 - Metaprogramming (eval, exec, getattr)
+- Introspection helpers such as type(), dir(), vars(), id()
 - Underscore prefixes/suffixes (__private_var, var__)
 - Standard library imports (os, sys, json, etc.)
 
